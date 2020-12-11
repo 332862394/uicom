@@ -1,7 +1,7 @@
 <template>
    <button class="g-button">
-   <svg class="icon" aria-hidden="true">
-    <use xlink:href="#i-settings"></use>
+   <svg class="icon" >
+    <use :xlink:href="`#i-${icon}`"></use>
    </svg>
        <slot><slot/>
    </button>
@@ -9,7 +9,7 @@
 
 <script>
     export default {
-        
+        props:['icon']
     }
 </script>
 
@@ -25,11 +25,5 @@
         &:active {background-color: var(--button-active-bg);}
         &:focus {outline: none;}
       }
-      .icon {
-        width: 1em;
-        height: 1em;
-        vertical-align: -0.15em;
-        fill: currentColor;
-        overflow: hidden;
-      }
+      
 </style>
