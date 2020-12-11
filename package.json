@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/332862394/uicom/issues"
   },
-  "homepage": "https://github.com/332862394/uicom#readme"
+  "homepage": "https://github.com/332862394/uicom#readme",
+  "dependencies": {
+    "vue": "^2.6.12"
+  }
 }
