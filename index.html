@@ -29,33 +29,48 @@
         font-size: var(--font-size);
       }
     </style>
-    <style></style>
+    <style>
+      .box{
+        margin: 20px;
+      }
+    </style>
   </head>
   <body>
     <div id="app">
-      <g-button :loading="loading1" @clickdd="loading1=!loading1">
-        测试1</g-button
-      >
-      <g-button
-        icon="settings"
-        :loading="loading2"
-        @clickdd="loading2=!loading2"
-      >
-        测试2</g-button
-      >
-      <g-button
-        icon="settings"
-        icon-position="right"
-        :loading="loading3"
-        @clickdd="loading3=!loading3"
-      >
-        测试3</g-button
-      >
-      <g-button-group>
-        <g-button icon="left">上一步</g-button>
-        <g-button>更多</g-button>
-        <g-button icon="right" icon-position="right">下一步</g-button>
-      </g-button-group>
+      <div class="box">
+        <g-input value="hello1" disabled/></g-input>
+        <g-input value="hello2" readonly/></g-input>
+        <g-input value="hello3"/></g-input>
+      </div>
+    <div class="box">
+      <g-input value="hello4" error="不能少于两个字"/></g-input>
+    </div>
+    
+      <div class="box">
+        <g-button :loading="loading1" @clickdd="loading1=!loading1">
+          测试1</g-button
+        >
+        <g-button
+          icon="settings"
+          :loading="loading2"
+          @clickdd="loading2=!loading2"
+        >
+          测试2</g-button
+        >
+        <g-button
+          icon="settings"
+          icon-position="right"
+          :loading="loading3"
+          @clickdd="loading3=!loading3"
+        >
+          测试3</g-button
+        >
+        <g-button-group>
+          <g-button icon="left">上一步</g-button>
+          <g-button>更多</g-button>
+          <g-button icon="right" icon-position="right">下一步</g-button>
+        </g-button-group>
+      </div>
     </div>
     <script src="./src/app.js"></script>
     <script src="//at.alicdn.com/t/font_2264110_z655cpxsht.js"></script>
