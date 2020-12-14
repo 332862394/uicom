@@ -1,5 +1,5 @@
 <template>
-    <div class="row" :style="{marginLeft:-gutter/2+'px',marginRight:-gutter/2+'px'}">
+    <div class="row" :style="rowStytle">
        <slot></slot>
        
       </div>
@@ -9,6 +9,15 @@
     export default {
         props:{
             gutter:[Number,String]
+        },
+        computed:{
+           rowStytle(){
+               let {gutter}=this
+               return {
+                   marginLeft:-gutter/2+'px',
+                   marginRight:-gutter/2+'px'
+               }
+           }
         },
         mounted(){
             this.$children.forEach((vm)=>{
