@@ -40,13 +40,16 @@
       <div class="box">
         <g-input value="hello1" disabled/></g-input>
         <g-input value="hello2" readonly/></g-input>
-        <g-input value="hello3"/></g-input>
+        <g-input value="hello3" /></g-input>
+        
       </div>
     <div class="box">
       <g-input value="hello4" error="不能少于两个字"/></g-input>
     </div>
     <div class="box">
-      <g-input value="hello5" @change="inputChange"/></g-input>
+      <g-input value="hello5"  v-model="message"/></g-input>
+      <p>{{message}}</p>
+      <button @click="message+=1">+1</button>
     </div>
       <div class="box">
         <g-button :loading="loading1" @clickdd="loading1=!loading1">
