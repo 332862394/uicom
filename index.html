@@ -31,9 +31,24 @@
   </head>
   <body>
     <div id="app">
-      <g-button> 测试1</g-button>
-      <g-button icon="settings"> 测试2</g-button>
-      <g-button icon="settings" icon-position="right"> 测试3</g-button>
+      <g-button :loading="loading1" @clickdd="loading1=!loading1">
+        测试1</g-button
+      >
+      <g-button
+        icon="settings"
+        :loading="loading2"
+        @clickdd="loading2=!loading2"
+      >
+        测试2</g-button
+      >
+      <g-button
+        icon="settings"
+        icon-position="right"
+        :loading="loading3"
+        @clickdd="loading3=!loading3"
+      >
+        测试3</g-button
+      >
       <g-icon name="left"></g-icon>
     </div>
     <script src="./src/app.js"></script>
