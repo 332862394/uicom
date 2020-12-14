@@ -12,6 +12,13 @@ new Vue({
     data:{
     loading1:false,
     loading2:true,
-    loading3:false
-} 
+    loading3:false,
+    
+} ,
+methods:{
+    inputChange(xxx){
+        console.log("fff")
+        console.log(xxx.target.value)
+    }
+}
 })
