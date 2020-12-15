@@ -24,16 +24,25 @@ new Vue({
     message:'hi'
     
 } ,
+created(){
+    this.$toast("这是toast测试",{
+        closeButton:{
+            text:'知道了',
+            callback(toast){
+                toast.log()
+                console.log("这是测试回调")
+            }
+        }
+    })
+},
 methods:{
     inputChange(xxx){
         console.log("fff")
         console.log(xxx.target.value)
     },
     showToast(){
-        this.$toast("这是toast测试")
+       
     }
 },
-mounted(){
-    
-}
+
 })
