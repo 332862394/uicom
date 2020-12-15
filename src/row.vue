@@ -1,5 +1,5 @@
 <template>
-    <div class="row" :style="rowStytle">
+    <div class="row" :style="rowStytle" :class="rowclass">
        <slot></slot>
        
       </div>
@@ -8,7 +8,13 @@
 <script>
     export default {
         props:{
-            gutter:[Number,String]
+            gutter:[Number,String],
+            align:{
+                type:String,
+                validator(value){
+                    return ['left','right','center'].includes(value)
+                }
+            }
         },
         computed:{
            rowStytle(){
@@ -17,6 +23,10 @@
                    marginLeft:-gutter/2+'px',
                    marginRight:-gutter/2+'px'
                }
+           },
+           rowclass(){
+               let {align}=this
+               return [align&&`align-${align}`]
            }
         },
         mounted(){
@@ -31,6 +41,15 @@
 <style lang="scss" scoped>
 .row{
         display: flex;
+        &.align-left{
+            justify-content: flex-start;
+        }
+        &.align-right{
+            justify-content: flex-start;
+        }
+        &.align-center{
+            justify-content: center;
+        }
         
       }
 </style>
