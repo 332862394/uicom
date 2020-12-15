@@ -6,15 +6,7 @@
 </template>
 
 <script>
-    export default {
-        props:{
-            span:{
-                type:[Number,String]
-            },
-            offset:[Number,String],
-            phone:{
-                type:Object,
-                validator(value){
+       let validator=(value)=>{
                     let keys=Object.keys(value)
                     let valid=true
                     keys.forEach(key=>{
@@ -25,7 +17,16 @@
                     }) 
                    return valid
                 }
-            }
+    export default {
+        props:{
+            span:{
+                type:[Number,String]
+            },
+            offset:[Number,String],
+            ipad:{type:Object,validator},
+            narrowPc:{type:Object,validator},
+            pc:{type:Object,validator},
+            widePic:{type:Object,validator},
             
         },
         data(){
@@ -33,14 +34,26 @@
                 gutter:0
             }
         },
+        methods:{
+              createClasses(obj,str=''){
+                    if(!obj){return []}
+                    let array=[]
+                    if(obj.span){array.push(`col-${str}${obj.span}`)}
+                    if(obj.offset){array.push(`offset-${str}${obj.offset}`)}
+                    return array
+                }
+        },
         computed:{
             colClass(){
-                let {span,offset,phone}=this
-                let phoneClass=[]
-                if(phone){
-                    phoneClass=[`col-phone-${phone.span}`]
-                }
-                return [span&&`col-${span}`,offset&&`offset-${offset}`,...phoneClass]
+                let {span,offset,iPad,narrowPc,pc,widePic}=this
+                let createClasses=this.createClasses
+                return [
+                    ...createClasses({span,offset}),
+                    ...createClasses(iPad,'ipad-'),
+                    ...createClasses(narrowPc,'narrow-pc-'),
+                    ...createClasses(pc,'pc-'),
+                    ...createClasses(widePic,'wide-pc-'),
+                ]
             },
             colStyle(){
                 return {
@@ -57,7 +70,8 @@
  .col{
         
         width: 50%;
-        // border:1px solid red;
+        height: 50px;
+        border:1px solid red;
         // padding: 0 10px;
         $class-prefix:col-;
         @for $n from 1 through 24{
@@ -71,21 +85,7 @@
                 margin-left: ($n/24)*100%;
             }
         }
-        @media (max-width:576px) {
-             $class-prefix:col-phone-;
-        @for $n from 1 through 24{
-            &.#{$class-prefix}#{$n}{
-                width: ($n/24)*100%;
-            }
-        }
-        $class-prefix:offset-phone-;
-        @for $n from 1 through 24{
-            &.#{$class-prefix}#{$n}{
-                margin-left: ($n/24)*100%;
-            }
-        }
-        }
-         @media (min-width: 557px)and (max-width:768px) {
+        @media (min-width:577px) {
              $class-prefix:col-ipad-;
         @for $n from 1 through 24{
             &.#{$class-prefix}#{$n}{
@@ -99,14 +99,43 @@
             }
         }
         }
-         @media (min-width:769px) and (max-width: 992px) {
-             $class-prefix:col-narrow-pc;
+         @media (min-width: 769px) {
+             $class-prefix:col-narrow-pc-;
         @for $n from 1 through 24{
             &.#{$class-prefix}#{$n}{
                 width: ($n/24)*100%;
             }
         }
         $class-prefix:offset-narrow-pc-;
+        @for $n from 1 through 24{
+            &.#{$class-prefix}#{$n}{
+                margin-left: ($n/24)*100%;
+            }
+        }
+        }
+         @media (min-width: 993px)  {
+             $class-prefix:col-pc-;
+        @for $n from 1 through 24{
+            &.#{$class-prefix}#{$n}{
+                width: ($n/24)*100%;
+            }
+        }
+        $class-prefix:offset-pc-;
+        @for $n from 1 through 24{
+            &.#{$class-prefix}#{$n}{
+                margin-left: ($n/24)*100%;
+            }
+        }
+        }
+
+         @media (min-width: 1201px)  {
+             $class-prefix:col-wide-pc-;
+        @for $n from 1 through 24{
+            &.#{$class-prefix}#{$n}{
+                width: ($n/24)*100%;
+            }
+        }
+        $class-prefix:offset-wide-pc-;
         @for $n from 1 through 24{
             &.#{$class-prefix}#{$n}{
                 margin-left: ($n/24)*100%;

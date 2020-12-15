@@ -38,31 +38,11 @@
     
   <body>
     <div id="app">
-      <div style="border:1px solid black">
-        <g-row gutter="20">
-          <g-col span="2" :phone="{span:12}}">1</g-col>
-          <g-col span="20" offset="2" :phone="{span:12,offset:0}">2</g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col span="2">1</g-col>
-          <g-col span="20" offset="2">2</g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col span="4">1</g-col>
-          <g-col span="18" offset="2">2</g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col span="4">1</g-col>
-          <g-col span="8" offset="2">2</g-col>
-          <g-col span="8" offset="2">2</g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col span="4">1</g-col>
-          <g-col span="4" offset="6">2</g-col>
-          <g-col span="8" offset="2">2</g-col>
-        </g-row>
-
-      </div>
+      <g-row >
+        <g-col span="23" offset="1" :narrow-pc="{span:12,offset:12}">
+          <div class="demo">1</div>
+        </g-col>
+      </g-row>
       
       <hr>
       <div class="box">
